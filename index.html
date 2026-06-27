@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MambuLab</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+   THEME
+========================= */
+
+:root{
+--bg1:#070a16;
+--bg2:#15103a;
+--glass:rgba(255,255,255,0.08);
+--border:rgba(255,255,255,0.15);
+--text:white;
+--accent:#00d4ff;
+}
+
+body.light{
+--bg1:#eef5ff;
+--bg2:#cfe3ff;
+--glass:rgba(255,255,255,0.7);
+--border:rgba(0,0,0,0.1);
+--text:#111;
+}
+
+/* =========================
+   BASE
+========================= */
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
+
+body{
+min-height:100vh;
+color:var(--text);
+overflow-x:hidden;
+background:linear-gradient(-45deg,var(--bg1),var(--bg2),#0ea5e9,#22c55e);
+background-size:400% 400%;
+animation:bg 14s ease infinite;
+}
+
+@keyframes bg{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* =========================
+   FLOATING LIGHTS
+========================= */
+
+body::before,
+body::after{
+content:"";
+position:fixed;
+width:500px;
+height:500px;
+background:radial-gradient(circle,rgba(255,255,255,0.25),transparent 60%);
+filter:blur(70px);
+z-index:-2;
+}
+
+body::before{top:-150px;left:-150px;}
+body::after{bottom:-150px;right:-150px;}
+
+/* =========================
+   HERO
+========================= */
+
+header{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:40px;
+}
+
+.hero{
+max-width:900px;
+animation:fadeUp 1s ease;
+}
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(30px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+h1{
+font-size:clamp(3rem,6vw,5rem);
+font-weight:800;
+}
+
+.subtitle{
+margin-top:15px;
+opacity:.8;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons{
+margin-top:25px;
+display:flex;
+justify-content:center;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:12px 22px;
+border-radius:999px;
+text-decoration:none;
+color:var(--text);
+background:var(--glass);
+border:1px solid var(--border);
+transition:.3s;
+backdrop-filter:blur(16px);
+}
+
+.btn:hover{
+transform:translateY(-5px);
+}
+
+/* =========================
+   DASHBOARD STRIP
+========================= */
+
+.strip{
+margin-top:25px;
+display:flex;
+gap:12px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.badge{
+padding:10px 16px;
+border-radius:999px;
+background:var(--glass);
+border:1px solid var(--border);
+font-size:13px;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:40px 20px;
+}
+
+.section-title{
+font-size:26px;
+margin-bottom:15px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:18px;
+}
+
+.card{
+background:var(--glass);
+border:1px solid var(--border);
+border-radius:22px;
+padding:20px;
+backdrop-filter:blur(18px);
+transition:.25s;
+transform-style:preserve-3d;
+cursor:pointer;
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.02);
+}
+
+/* =========================
+   TAGS
+========================= */
+
+.tag{
+display:inline-block;
+padding:8px 14px;
+border-radius:999px;
+background:var(--glass);
+border:1px solid var(--border);
+margin:5px;
+font-size:13px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+text-align:center;
+padding:50px;
+opacity:.7;
+}
+
+/* =========================
+   SMOOTH SCROLL
+========================= */
+
+html{scroll-behavior:smooth;}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="hero">
+
+<h1>MambuLab</h1>
+
+<p class="subtitle" id="subtitle">
+3D Printing • Fidgets • Clickers • Keychains
+</p>
+
+<div class="strip">
+<div class="badge">🖨️ Bambu P2S Owner</div>
+<div class="badge">📦 1 Published Model</div>
+<div class="badge">🔥 Growing Creator</div>
+</div>
+
+<div class="buttons">
+<button class="btn" onclick="toggleTheme()">🌙 / ☀️</button>
+<button class="btn" onclick="setLang('en')">EN</button>
+<button class="btn" onclick="setLang('de')">DE</button>
+</div>
+
+<div class="buttons">
+<a class="btn" href="https://makerworld.com/@MambuLab" target="_blank">🟢 MakerWorld</a>
+<a class="btn" href="https://youtube.com/@MambuLab" target="_blank">🔴 YouTube</a>
+</div>
+
+</div>
+</header>
+
+<div class="container">
+
+<h2 class="section-title">👤 About Me</h2>
+
+<div class="card" id="aboutText">
+Hello! I'm Daniel from Germany. I love 3D printers and I own a Bambu P2S.
+</div>
+
+</div>
+
+<div class="container">
+
+<h2 class="section-title">📦 Models</h2>
+
+<div class="grid">
+
+<a class="card"
+target="_blank"
+href="https://makerworld.com/models/2533375-spiral-fidget#profileId-2788322">
+
+🌀 Spiral Fidget<br>
+<small>Click to open MakerWorld</small>
+
+</a>
+
+<div class="card">
+🔄 Twisty Fidget<br>
+<small>Coming Soon</small>
+</div>
+
+</div>
+
+</div>
+
+<div class="container">
+
+<h2 class="section-title">🏷️ Tags</h2>
+
+<span class="tag">Fidget</span>
+<span class="tag">Clicker</span>
+<span class="tag">3D Printing</span>
+<span class="tag">MakerWorld</span>
+<span class="tag">Bambu P2S</span>
+
+</div>
+
+<footer>
+© 2026 MambuLab • Ultra Creator UI
+</footer>
+
+<script>
+
+/* THEME */
+function toggleTheme(){
+document.body.classList.toggle("light");
+}
+
+/* LANGUAGE */
+const texts={
+en:"Hello! I'm Daniel from Germany. I love 3D printers and I own a Bambu P2S.",
+de:"Hallo! Ich bin Daniel aus Deutschland. Ich liebe 3D-Drucker und habe einen Bambu P2S."
+};
+
+function setLang(lang){
+document.getElementById("aboutText").innerText=texts[lang];
+}
+
+</script>
+
+</body>
+</html>
